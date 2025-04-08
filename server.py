@@ -125,8 +125,9 @@ def read_records(
             "table": table_name,
         }
     except Exception as e:
-        logger.error(f"Error reading records from {table_name}: {str(e)}")
-        return {"success": False, "error": str(e), "table": table_name}
+        error_message = str(e)
+        logger.error(f"Error reading records from {table_name}: {error_message}")
+        return {"success": False, "error": error_message, "table": table_name}
 
 
 @mcp.tool()
@@ -163,8 +164,9 @@ def create_records(table_name: str, records: List[Dict[str, Any]]) -> Dict[str, 
             "table": table_name,
         }
     except Exception as e:
-        logger.error(f"Error creating records in {table_name}: {str(e)}")
-        return {"success": False, "error": str(e), "table": table_name}
+        error_message = str(e)
+        logger.error(f"Error creating records in {table_name}: {error_message}")
+        return {"success": False, "error": error_message, "table": table_name}
 
 
 @mcp.tool()
@@ -241,8 +243,9 @@ def update_records(
             "table": table_name,
         }
     except Exception as e:
-        logger.error(f"Error updating records in {table_name}: {str(e)}")
-        return {"success": False, "error": str(e), "table": table_name}
+        error_message = str(e)
+        logger.error(f"Error updating records in {table_name}: {error_message}")
+        return {"success": False, "error": error_message, "table": table_name}
 
 
 @mcp.tool()
@@ -311,8 +314,9 @@ def delete_records(table_name: str, filters: Dict[str, Any]) -> Dict[str, Any]:
             "table": table_name,
         }
     except Exception as e:
-        logger.error(f"Error deleting records from {table_name}: {str(e)}")
-        return {"success": False, "error": str(e), "table": table_name}
+        error_message = str(e)
+        logger.error(f"Error deleting records from {table_name}: {error_message}")
+        return {"success": False, "error": error_message, "table": table_name}
 
 
 if __name__ == "__main__":

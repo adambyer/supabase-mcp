@@ -163,14 +163,10 @@ This server uses the Supabase service role key, which has full access to your da
 To run the test suite:
 
 ```
-pytest
+python -m pytest
 ```
 
-For tests with coverage report:
-
-```
-pytest --cov=.
-```
+The tests use pytest's fixtures and mocking capabilities to test the functionality without requiring a real Supabase connection. All CRUD operations (Create, Read, Update, Delete) are thoroughly tested.
 
 ### Code Formatting
 
