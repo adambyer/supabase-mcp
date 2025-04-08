@@ -198,32 +198,41 @@ def update_records(
     try:
         # First, retrieve the records that match the filters
         read_response = read_records(table_name=table_name, filters=filters)
-        
-        if not read_response.get("success", False) or len(read_response.get("data", [])) == 0:
+
+        if (
+            not read_response.get("success", False)
+            or len(read_response.get("data", [])) == 0
+        ):
             return {
                 "success": False,
                 "error": "No records found matching the provided filters",
                 "table": table_name,
             }
-        
+
         # Extract IDs of matching records
-        record_ids = [record["id"] for record in read_response.get("data", []) if "id" in record]
-        
+        record_ids = [
+            record["id"] for record in read_response.get("data", []) if "id" in record
+        ]
+
         if not record_ids:
             return {
                 "success": False,
                 "error": "Could not find ID field in the records",
                 "table": table_name,
             }
-        
+
         # Update each record by ID
         updated_records = []
         for record_id in record_ids:
             # Update by ID which should work on all implementations
-            update_query = supabase_client.table(table_name).update(updates).match({"id": record_id})
+            update_query = (
+                supabase_client.table(table_name)
+                .update(updates)
+                .match({"id": record_id})
+            )
             update_result = update_query.execute()
             updated_records.extend(update_result.data)
-        
+
         # Return the results
         return {
             "success": True,
@@ -261,32 +270,39 @@ def delete_records(table_name: str, filters: Dict[str, Any]) -> Dict[str, Any]:
     try:
         # First, retrieve the records that match the filters
         read_response = read_records(table_name=table_name, filters=filters)
-        
-        if not read_response.get("success", False) or len(read_response.get("data", [])) == 0:
+
+        if (
+            not read_response.get("success", False)
+            or len(read_response.get("data", [])) == 0
+        ):
             return {
                 "success": False,
                 "error": "No records found matching the provided filters",
                 "table": table_name,
             }
-        
+
         # Extract IDs of matching records
-        record_ids = [record["id"] for record in read_response.get("data", []) if "id" in record]
-        
+        record_ids = [
+            record["id"] for record in read_response.get("data", []) if "id" in record
+        ]
+
         if not record_ids:
             return {
                 "success": False,
                 "error": "Could not find ID field in the records",
                 "table": table_name,
             }
-        
+
         # Delete each record by ID
         deleted_records = []
         for record_id in record_ids:
             # Delete by ID which should work on all implementations
-            delete_query = supabase_client.table(table_name).delete().match({"id": record_id})
+            delete_query = (
+                supabase_client.table(table_name).delete().match({"id": record_id})
+            )
             delete_result = delete_query.execute()
             deleted_records.extend(delete_result.data)
-        
+
         # Return the results
         return {
             "success": True,

@@ -33,6 +33,11 @@ A Model Context Protocol (MCP) server implementation that allows Large Language 
    pip install -r requirements.txt
    ```
 
+   For development and testing, install development dependencies:
+   ```
+   pip install -r requirements-dev.txt
+   ```
+
 4. Create a `.env` file with your Supabase credentials:
    ```
    cp .env.example .env
@@ -150,6 +155,30 @@ This server uses the Supabase service role key, which has full access to your da
 - **Connection Issues**: Ensure your Supabase URL and service role key are correct in the `.env` file.
 - **Permission Errors**: Make sure your service role key has the necessary permissions for the operations you're trying to perform.
 - **Missing Tables**: Verify that the tables you're accessing exist in your Supabase project.
+
+## Development
+
+### Running Tests
+
+To run the test suite:
+
+```
+pytest
+```
+
+For tests with coverage report:
+
+```
+pytest --cov=.
+```
+
+### Code Formatting
+
+Format code using black:
+
+```
+black .
+```
 
 ## License
 

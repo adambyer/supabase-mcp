@@ -27,9 +27,14 @@
 - [x] Implement CRUD operations for Supabase tables
 
 ## Testing
-- [ ] Create simple test script to verify MCP server functionality
-- [ ] Test connection to Supabase
-- [ ] Verify basic query execution
+- [x] Create pytest test suite for server functionality
+- [x] Implement unit tests for read_records
+- [x] Implement unit tests for create_records
+- [x] Implement unit tests for update_records
+- [x] Implement unit tests for delete_records
+- [ ] Test connection to real Supabase instance
+- [ ] Create integration tests
+=======
 
 ## Documentation
 - [x] Document setup process
