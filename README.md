@@ -2,7 +2,7 @@
 
 A Model Context Protocol (MCP) server implementation that allows Large Language Models (LLMs) to interact with Supabase databases using natural language. This server implements the MCP specification and provides a set of tools for performing common database operations.
 
-**Note that this implementation is experimental and should be used with caution.**
+**Note that this implementation is experimental and should be used with caution. It was built with the help of Claude 3.7 Sonnet.**
 
 ## Features
 
